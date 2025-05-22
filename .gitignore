@@ -1,0 +1,21 @@
+# datasets/
+debug/
+logdirs/
+runs/
+checkpoints/
+results/
+logs/
+outputs/
+
+debug-logs.out
+*.log
+
+third_party/
+
+__pycache__/
+core.*
+
+
+vis_results
+
+demo_data/*/*.npy

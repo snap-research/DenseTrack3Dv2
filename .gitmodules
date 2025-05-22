@@ -1,0 +1,9 @@
+[submodule "submodules/UniDepth"]
+	path = submodules/UniDepth
+	url = https://github.com/lpiccinelli-eth/UniDepth.git
+[submodule "submodules/DepthCrafter"]
+	path = submodules/DepthCrafter
+	url = https://github.com/Tencent/DepthCrafter.git
+[submodule "submodules/Grounded-SAM-2"]
+	path = submodules/Grounded-SAM-2
+	url = https://github.com/IDEA-Research/Grounded-SAM-2

@@ -1,0 +1,67 @@
+# torchrun --nnodes=1 --nproc_per_node=1 --master_port=23432 scripts/train/train_acc_3d.py --config-name densetrack3dv2
+# torchrun --nnodes=2 --nproc_per_node=8 --master_port=23432 scripts/train/train_acc_3d.py --config-name densetrack3dv2
+
+
+model_name: "densetrack3dv2"
+restore_ckpt: "checkpoints/densetrack3d.pth"
+ckpt_path: logdirs/densetrack3dv2
+
+batch_size: 1
+num_nodes: 1
+num_workers: 10
+
+mixed_precision: false
+
+lr: 0.0002
+# lr: 0.00005
+wdecay: 0.00001
+num_steps: 50000
+# num_steps: 30000
+
+evaluate_every_n_epoch: 4
+save_every_n_epoch: 4
+validate_at_start: false
+
+save_freq: 500
+traj_per_sample: 256
+
+dataset_root: "None"
+
+train_iters: 4
+sequence_len: 24
+
+eval_datasets:
+  - tapvid_davis_first
+
+num_virtual_tracks: 64
+dont_use_augs: false
+sample_vis_1st_frame: false
+
+sliding_window_len: 16
+model_stride: 4
+
+crop_size: [384, 512]
+eval_max_seq_len: 1000
+
+model: DenseTrack3DV2(
+    stride=${model_stride},
+    window_len=${sliding_window_len},
+    add_space_attn=True,
+    num_virtual_tracks=${num_virtual_tracks},
+    model_resolution=(${crop_size[0]}, ${crop_size[1]}),
+    flash=False,
+    coarse_to_fine_dense=True,
+  )
+
+accum_iter: 1
+resume_from: null
+
+lambda_2d: 50.0
+lambda_d: 1.0
+lambda_vis: 0.1
+lambda_conf: 0.1
+
+hydra:
+  verbose: True
+  run:
+    dir: ./${ckpt_path}
