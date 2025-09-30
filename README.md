@@ -32,8 +32,8 @@ This is the official GitHub repository of the paper:
 
 1. Clone DELTAv2.
 ```bash
-git clone --recursive https://github.com/snap-research/DenseTrack3D
-cd DenseTrack3D
+git clone --recursive https://github.com/snap-research/DenseTrack3Dv2
+cd DenseTrack3Dv2
 ## if you have already cloned DenseTrack3D:
 # git submodule update --init --recursive
 ```
@@ -93,15 +93,14 @@ pip install --no-build-isolation -e grounding_dino
 
 ### Download Checkpoints
 
-The pretrained checkpoints can be downloaded on [Google Drive](https://drive.google.com/drive/folders/1nT46aWzM1CKdANobWZ2qx8Pd6W4nDvVR?usp=sharing).
+The pretrained checkpoints can be downloaded on [Google Drive](https://drive.google.com/file/d/1Qa9YFAjBFIzrrHHWf8NZMln5YkLfw4Qa/view?usp=sharing).
 
 
 Run the following commands to download:
 ```bash
 # download the weights
 mkdir -p ./checkpoints/
-gdown --fuzzy https://drive.google.com/file/d/18d5M3nl3AxbG4ZkT7wssvMXZXbmXrnjz/view?usp=sharing -O ./checkpoints/ # 3D ckpt
-gdown --fuzzy https://drive.google.com/file/d/1S_T7DzqBXMtr0voRC_XUGn1VTnPk_7Rm/view?usp=sharing -O ./checkpoints/ # 2D ckpt
+gdown --fuzzy https://drive.google.com/file/d/1Qa9YFAjBFIzrrHHWf8NZMln5YkLfw4Qa/view?usp=sharing -O ./checkpoints/ # 3D ckpt
 
 ```
 
