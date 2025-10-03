@@ -16,7 +16,7 @@ This is the official GitHub repository of the paper:
 [Chaoyang Wang](https://mightychaos.github.io/),
 </br>
 
-### [Project Page](https://snap-research.github.io/DELTA/) | [Arxiv](https://arxiv.org/abs/2410.24211) | [Paper](https://snap-research.github.io/DELTA/files/paper.pdf) | [BibTeX](#citing-delta)
+### [Project Page](https://snap-research.github.io/DELTAv2/) | [Arxiv](https://arxiv.org/abs/2508.01170) | [Paper](https://snap-research.github.io/DELTAv2/files/paper.pdf) | [BibTeX](#citing-delta)
 
 
 <img width="1100" src="./assets/teaser.png" />
@@ -112,38 +112,38 @@ gdown --fuzzy https://drive.google.com/file/d/1Qa9YFAjBFIzrrHHWf8NZMln5YkLfw4Qa/
 - **Dense 3D Tracking**: This is the main contribution of our work, where the model takes an RGB-D video (the videodepth can be obtained by an off-the-shelf depth estimator) and outputs a dense 3D trajectory map. To run the inference code, you can use the following command:
 
   ```bash
-  python3 demo.py --ckpt checkpoints/densetrack3d.pth --video_path demo_data/yellow-duck --output_path results/demo # run with Unidepth
+  python3 demo.py --ckpt checkpoints/densetrack3dv2.pth --video_path demo_data/yellow-duck --output_path results/demo # run with Unidepth
 
   # or
-  python3 demo.py --ckpt logdirs/densetrack3d/model_densetrack3d_pyr_002112.pth --video_path demo_data/yellow-duck --output_path results/pyramid --use_depthcrafter # run with DepthCrafter
+  python3 demo.py --ckpt checkpoints/densetrack3dv2.pth --video_path demo_data/yellow-duck --output_path results/pyramid --use_depthcrafter # run with DepthCrafter
   ```
 
   By default, densely tracking a video of ~100 frames requires ~40GB of GPU memory. To reduce memory consumption, we can use a larger upsample factor (e.g., 8x) and enable fp16 inference, which reduces the requirement to ~20GB of GPU memory:
 
   ```bash
-  python3 demo.py --upsample_factor 8 --use_fp16 --ckpt checkpoints/densetrack3d.pth --video_path demo_data/yellow-duck --output_path results/demo
+  python3 demo.py --upsample_factor 8 --use_fp16 --ckpt checkpoints/densetrack3dv2.pth --video_path demo_data/yellow-duck --output_path results/demo
   ```
 
 
 - **Sparse 3D Tracking**: We also support sparse 3D point tracking (similar to [SceneTracker](https://github.com/wwsource/SceneTracker) and [SpaTracker](https://github.com/henry123-boy/SpaTracker)), where users can specify which points to track or the model will track a sparse grid of points by default.
 
   ```bash
-  python3 demo_sparse.py --ckpt checkpoints/densetrack3d.pth --video_path demo_data/yellow-duck --output_path results/demo # run with Unidepth
+  python3 demo_sparse.py --ckpt checkpoints/densetrack3dv2.pth --video_path demo_data/yellow-duck --output_path results/demo # run with Unidepth
 
   # or
-  python3 demo_sparse.py --ckpt checkpoints/densetrack3d.pth --video_path demo_data/yellow-duck --output_path results/demo --use_depthcrafter # run with DepthCrafter
+  python3 demo_sparse.py --ckpt checkpoints/densetrack3dv2.pth --video_path demo_data/yellow-duck --output_path results/demo --use_depthcrafter # run with DepthCrafter
   ```
 
 - **Dense 2D Tracking**: This mode is similar to [DOT](https://github.com/16lemoing/dot), where the model only takes an RGB video (no depth input) and outputs the dense 2D coords map (UV map).
 
   ```bash
-  python3 demo_2d.py --ckpt checkpoints/densetrack2d.pth --video_path demo_data/yellow-duck --output_path results/demo
+  python3 demo_2d.py --ckpt checkpoints/densetrack3dv2.pth --video_path demo_data/yellow-duck --output_path results/demo
   ```
 
 - **Sparse 2D Tracking**: This mode is similar to [CoTracker](https://github.com/facebookresearch/co-tracker), where the model only takes an RGB video as input, then users can specify which points to track or the model will track a sparse grid of points by default. The output is a set of 2D trajectories.
 
   ```bash
-  python3 demo_2d_sparse.py --ckpt checkpoints/densetrack2d.pth --video_path demo_data/yellow-duck --output_path results/demo
+  python3 demo_2d_sparse.py --ckpt checkpoints/densetrack3dv2.pth --video_path demo_data/yellow-duck --output_path results/demo
   ```
 
 2. [Optional] Visualize the dense 3D tracks with `viser`:
@@ -202,17 +202,17 @@ python3 scripts/eval/eval_flow2d.py
 python3 scripts/eval/eval_2d.py
 ```
 
-<!-- ## Citing DELTA
+## Citing DELTA
 
-If you find our repository useful, please consider giving it a star ⭐ and citing our paper in your work:
+If you find our repository useful, please consider giving it a star ⭐ and citing our paper in your work: -->
 
 ```bibtex
 @article{ngo2024delta,
-  author    = {Ngo, Tuan Duc and Zhuang, Peiye and Gan, Chuang and Kalogerakis, Evangelos and Tulyakov, Sergey and Lee, Hsin-Ying and Wang, Chaoyang},
+  author    = {Ngo, Tuan Duc and Mirzaei, Ashkan and Qian, Gordon and Liang, Hanwen and Gan, Chuang and Kalogerakis, Evangelos and Wonka, Peter and Wang, Chaoyang},
   title     = {DELTAv2: Dense Efficient Long-range 3D Tracking for Any video},
-  journal   = {arXiv preprint arXiv:2410.24211},
-  year      = {2024}
-} -->
+  journal   = {arXiv preprint arXiv:2508.01170},
+  year      = {2025}
+}
 ```
 
 ## Acknowledgements
